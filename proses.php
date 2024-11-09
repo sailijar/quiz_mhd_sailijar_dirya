@@ -1,3 +1,23 @@
+<?php
+#1. membuat koneksi database dengan php 
+include("koneksi.php");
+
+#2. mengambil semua value dari from dan di masukkan ke masing-masing variabel
+$nidn = $_POST['nidn'];
+$nama = $_POST['nama'];
+$rumpun = $_POST['rumpun'];
+$tempat = $_POST['tempat'];
+$tanggal = $_POST['tanggal'];
+$email = $_POST['email'];
+#3.menuliskan quary SQL simpan
+$simpan = "INSERT INTO dosen (nidn,nama,rumpun,tempat,tanggal,email) VALUES ('$nidn','$nama','$rumpun','$tempat','$tanggal','$email')";
+
+#4.menjalankan query
+mysqli_query($koneksi, $simpan);
+
+#5.pesan berhasil atau gagalnya
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,44 +73,36 @@
                 <h3>Form Dosen</h3>
             </div>
             <div class="card-body">
-            <form action="proses.php" method="POST" enctype="multipart/form-data">
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">NIDN</label>
-    <input type="text" name="nama" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Nama Lengkap</label>
-    <input type="text" name="nama" class="form-control" id="exampleInputPassword1">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Rumpun</label>
-        <select name="rumpun" id="" class="form-control">
-            <option value="">-pilih Rumpun-</option>
-            <option value="komputer">komputer</option>
-            <option value="akuntansi">akuntansi</option>
-            <option value="manejemen">manejemen</option>
-            <option value="perpajakan">perpajakan</option>
-            <option value="bisnis">bisnis</option>
-            </select>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Tempat Lahir</label>
-    <input type="text" name="tempat" class="form-control" id="exampleInputPassword1">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Tanggal Lahir</label>
-    <input type="date" name="tanggal" class="form-control" id="exampleInputPassword1">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Email</label>
-    <input type="email" name="email" class="form-control" id="exampleInputPassword1">
-  </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-  <button type="reset" class="btn btn-primary">Reset</button>
-</form>
+            <table class="table">
+                <tbody>
+                    <tr>
+                    <td scope="row">Nidn</td>
+                    <th>: <?=$nidn?></th>
+                    </tr>
+                    <tr>
+                    <td scope="row">Nama Lengkap</td>
+                    <th>: <?=$nama?></th>
+                    </tr>
+                    <tr>
+                    <td scope="row">rumpun</td>
+                    <th>: <?=$rumpun?></th>
+                    </tr>
+                    <tr>
+                    <td scope="row">Tempat Lahir</td>
+                    <th>: <?=$tempat?></th>
+                    </tr>
+                    <tr>
+                    <td scope="row">Tanggal Lahir</td>
+                    <th>: <?=$tanggal?></th>
+                    </tr>
+                    <tr>
+                    <td scope="row">Email</td>
+                    <th>: <?=$email?></th>
+                    </tr>
+                    <tr>
+                </tbody>
+                </table>
+                <a href="index.php" class="btn btn-warning btn-sm">Kembali</a>
             </div>
         </div>
         </div>
